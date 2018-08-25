@@ -1,0 +1,14 @@
+# Created 2018-08-25 Sat 12:53
+#+TITLE: Transrate C to LLVM
+#+AUTHOR: Naoya Yamashita
+#+EXPORT_FILE_NAME: llvm
+
+* Simple IO
+#+NAME: return.c
+#+BEGIN_SRC C -n
+  int main () {
+      return 0;
+  }
+#+END_SRC
+
+#+RESULTS: 

@@ -11,7 +11,7 @@
     (shell-command (format "clang -c -S -emit-llvm -O%d %s -o %s" olevel c-filepath ll-filepath))
     (format "%s\n\n%s"
             (format "#+begin_src C -n\n%s#+end_src" (f-read-text c-filepath))
-            (format "#+begin_src llvm -n \n%s#+end_src" (f-read-text ll-filepath))))
+            (format "#+begin_src llvm -n\n%s#+end_src" (f-read-text ll-filepath))))
 #+end_src
 
 * Return value
@@ -25,7 +25,7 @@ int main() {
 }
 #+end_src
 
-#+begin_src llvm -n 
+#+begin_src llvm -n
 define i32 @main() {
   ret i32 42
 }
@@ -45,7 +45,7 @@ int main() {
 }
 #+end_src
 
-#+begin_src llvm -n 
+#+begin_src llvm -n
 define i32 @main() {
   %1 = alloca i8, align 1
   %2 = alloca i32, align 4
@@ -72,7 +72,7 @@ int main() {
 }
 #+end_src
 
-#+begin_src llvm -n 
+#+begin_src llvm -n
 ; Function Attrs: nounwind ssp uwtable
 define i32 @main() #0 {
   %1 = alloca i8, align 1
@@ -99,7 +99,7 @@ int main() {
 }
 #+end_src
 
-#+begin_src llvm -n 
+#+begin_src llvm -n
 define i32 @main() #0 {
   %1 = alloca i8, align 1
   %2 = alloca i8, align 1
@@ -125,7 +125,7 @@ int main() {
 }
 #+end_src
 
-#+begin_src llvm -n 
+#+begin_src llvm -n
 define i32 @main() #0 {
   ; int a, b, c
   %1 = alloca i32, align 4

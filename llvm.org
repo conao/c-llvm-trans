@@ -3,21 +3,21 @@
 #+export_file_name: llvm
 
 #+name: clang
-#+header: :var filename="test" :exports none :cache yes :results raw drawer
+#+header: :var filename="test" olevel=0 :exports none :cache yes :results raw drawer
 #+begin_src emacs-lisp
   (let* ((dir "src/")
          (c-filepath (format "%s%s.c" dir filename))
          (ll-filepath (format "%s%s.ll" dir filename)))
-    (shell-command (format "clang -c -S -emit-llvm -O0 %s.c" filename))
+    (shell-command (format "clang -c -S -emit-llvm -O%d %s -o %s" olevel c-filepath ll-filepath))
     (format "%s\n\n%s"
             (format "#+begin_src C -n\n%s#+end_src" (f-read-text c-filepath))
             (format "#+begin_src llvm -n \n%s#+end_src" (f-read-text ll-filepath))))
 #+end_src
 
 * Simple IO
-#+call: clang("01_return")
+#+call: clang("01_return", 3)
 
-#+RESULTS[69a97e2527258f42f82579e30537dda5fb15dbf9]:
+#+RESULTS[ab5491bb9dce1e650ab80d7370778bf4f42167a2]:
 :RESULTS:
 #+begin_src C -n
 int main() {
@@ -31,3 +31,4 @@ define i32 @main() {
 }
 #+end_src
 :END:
+

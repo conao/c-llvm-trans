@@ -150,3 +150,28 @@ define i32 @main() #0 {
 }
 #+end_src
 :END:
+
+* Printf
+#+call: clang("06_printf")
+
+#+RESULTS[f88effa3299ad41b793ce0219d72f6bc4f820fd9]:
+:RESULTS:
+#+begin_src C -n
+#include <stdio.h>
+
+int main() {
+    printf("Hello, world!\n");
+}
+#+end_src
+
+#+begin_src llvm -n
+@.str = private unnamed_addr constant [15 x i8] c"Hello, world!\0A\00", align 1
+
+define i32 @main() {
+  %1 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str, i32 0, i32 0))
+  ret i32 0
+}
+
+declare i32 @printf(i8*, ...) #1
+#+end_src
+:END:

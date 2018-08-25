@@ -110,3 +110,43 @@ define i32 @main() #0 {
 }
 #+end_src
 :END:
+
+* Calc Values
+#+call: clang("05_calc")
+
+#+RESULTS[394aafd3be9760bd51564504af399429d88c86cd]:
+:RESULTS:
+#+begin_src C -n
+int main() {
+    int a, b, c;
+    a = 32;
+    b = a + 24;
+    c = b - a;
+}
+#+end_src
+
+#+begin_src llvm -n 
+define i32 @main() #0 {
+  ; int a, b, c
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+
+  ; a = 32;
+  store i32 32, i32* %1, align 4
+
+  ; b = a + 24
+  %4 = load i32, i32* %1, align 4
+  %5 = add nsw i32 %4, 24
+  store i32 %5, i32* %2, align 4
+
+  ; c = b - a
+  %6 = load i32, i32* %2, align 4
+  %7 = load i32, i32* %1, align 4
+  %8 = sub nsw i32 %6, %7
+  store i32 %8, i32* %3, align 4
+
+  ret i32 0
+}
+#+end_src
+:END:

@@ -32,3 +32,56 @@ define i32 @main() {
 #+end_src
 :END:
 
+* Variables
+#+call: clang("02_variables")
+
+#+RESULTS[f25d259f225f45e0a9baf8b0fb6cd88ea572db4f]:
+:RESULTS:
+#+begin_src C -n
+int main() {
+    char c;
+    int i;
+    long l;
+}
+#+end_src
+
+#+begin_src llvm -n 
+define i32 @main() {
+  %1 = alloca i8, align 1
+  %2 = alloca i32, align 4
+  %3 = alloca i64, align 8
+  ret i32 0
+}
+#+end_src
+:END:
+
+* Assign Value
+#+call: clang("03_assign-value")
+
+#+RESULTS[0560ecb8172bc3ef91b47e7e1faf5d0bbd8b778f]:
+:RESULTS:
+#+begin_src C -n
+int main() {
+    char c;
+    int i;
+    long l;
+    
+    c = 'a';
+    i = 72;
+    l = 123456789012345;
+}
+#+end_src
+
+#+begin_src llvm -n 
+; Function Attrs: nounwind ssp uwtable
+define i32 @main() #0 {
+  %1 = alloca i8, align 1
+  %2 = alloca i32, align 4
+  %3 = alloca i64, align 8
+  store i8 97, i8* %1, align 1
+  store i32 72, i32* %2, align 4
+  store i64 123456789012345, i64* %3, align 8
+  ret i32 0
+}
+#+end_src
+:END:

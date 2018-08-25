@@ -14,7 +14,7 @@
             (format "#+begin_src llvm -n \n%s#+end_src" (f-read-text ll-filepath))))
 #+end_src
 
-* Simple IO
+* Return value
 #+call: clang("01_return", 3)
 
 #+RESULTS[ab5491bb9dce1e650ab80d7370778bf4f42167a2]:

@@ -175,3 +175,45 @@ define i32 @main() {
 declare i32 @printf(i8*, ...) #1
 #+end_src
 :END:
+
+* Alloc
+#+call: clang("07_alloc")
+
+#+RESULTS[c04e866a237d567113028ef48fde9a42bd810738]:
+:RESULTS:
+#+begin_src C -n
+#include <stdlib.h>
+
+int main() {
+  char* data = (char*)calloc(30000, sizeof(char));
+  char* ptr = data;
+  free(data);
+}
+#+end_src
+
+#+begin_src llvm -n
+define i32 @main() {
+  ;; char* data;
+  ;; char* ptr;
+  %1 = alloca i8*, align 8
+  %2 = alloca i8*, align 8
+
+  ;; data = (char*)calloc(30000, sizeof(char));
+  %3 = call i8* @calloc(i64 30000, i64 1)
+  store i8* %3, i8** %1, align 8
+
+  ;; ptr = data;
+  %4 = load i8*, i8** %1, align 8
+  store i8* %4, i8** %2, align 8
+
+  ;; free(data);
+  %5 = load i8*, i8** %1, align 8
+  call void @free(i8* %5)
+  ret i32 0
+}
+
+declare i8* @calloc(i64, i64) #1
+declare void @free(i8*) #1
+#+end_src
+:END:
+

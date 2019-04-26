@@ -1,7 +1,7 @@
 #+author: conao3
 #+date: <2018-10-25 Thu>
 
-[[https://github.com/conao3/c-llvm-trans.ll][https://raw.githubusercontent.com/conao3/files/master/header/png/c-llvm-trans.ll.png]]
+[[https://github.com/conao3/c-llvm-trans.ll][https://raw.githubusercontent.com/conao3/files/master/blob/headers/png/c-llvm-trans.ll.png]]
 [[https://github.com/conao3/c-llvm-trans.ll/blob/master/LICENSE][https://img.shields.io/github/license/conao3/c-llvm-trans.ll.svg?style=flat-square]]
 [[https://github.com/conao3/c-llvm-trans.ll/releases][https://img.shields.io/github/tag/conao3/c-llvm-trans.ll.svg?style=flat-square]]
 [[https://travis-ci.org/conao3/c-llvm-trans.ll][https://img.shields.io/travis/conao3/c-llvm-trans.ll/master.svg?style=flat-square]]
@@ -11,7 +11,7 @@
 [[https://join.slack.com/t/conao3-support/shared_invite/enQtNTg2MTY0MjkzOTU0LTFjOTdhOTFiNTM2NmY5YTE5MTNlYzNiOTE2MTZlZWZkNDEzZmRhN2E0NjkwMWViZTZiYjA4MDUxYTUzNDZiNjY][https://img.shields.io/badge/chat-on_slack-blue.svg?logo=slack&style=flat-square]]
 
 * Table of Contents
-- [[#background][Background]]
+- [[#Description][Description]]
 - [[#install][Install]]
 - [[#usage][Usage]]
 - [[#information][Information]]
@@ -20,15 +20,17 @@
   - [[#contribute][Contribute]]
   - [[#license][License]]
   - [[#author][Author]]
-  - [[#contributor][Contributor]]
+  - [[#contributors][Contributors]]
 
-* Background
+* Description
 The best leaning LLVM, read .ll code translated from C by Clang.
 
 This Theory is pointed out by those blogs ([[http://www.wilfred.me.uk/blog/2015/02/21/my-first-llvm-compiler/][My First LLVM Compiler]],
 [[https://itchyny.hatenablog.com/entry/2017/02/27/100000][LLVMを始めよう！ 〜 LLVM IRの基礎はclangが教えてくれた・Brainf**kコンパイラを作ってみよう 〜]])
 
 * Install
+This repository's porpose is only read .ll file.
+So just read it please!
 
 * Usage
 
@@ -59,5 +61,5 @@ Feel free to send PR!
 ** Author
 - Naoya Yamashita ([[https://github.com/conao3][conao3]])
 
-** Contributor
+** Contributors
 - Not yet... Now send PR and add your name!!
